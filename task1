@@ -1,0 +1,168 @@
+﻿using Demo;
+using static Demo.ListGenerator;
+namespace Linq01
+{
+    internal class Program
+    {
+        //Assigment  LINQ 01
+        static void Main( )
+        {
+            #region LINQ - Restriction Operators
+
+            #region 1. Find all products that are out of stock.
+            //var Result = ProductList.Where(P => P.UnitsInStock == 0);
+            #endregion
+
+            #region 2. Find all products that are in stock and cost more than 3.00 per unit.
+            //var Result = ProductList.Where(P => P.UnitsInStock > 0 && P.UnitPrice>3);
+
+            #endregion
+
+            #region 3. Returns digits whose name is shorter than their value.
+            //string[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            //
+            //var Result = Arr.Select((name, i) => new { name, i })
+            //                .Where(x => x.name.Length < x.i)
+            //                .Select(x => x.i);
+
+            #endregion
+
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+
+            #endregion
+
+            #region LINQ - Ordering Operators
+
+            #region 1. Sort a list of products by name
+            //var Result = ProductList.OrderBy(p => p.ProductName);
+            #endregion
+
+            #region 2. Uses a custom comparer to do a case-insensitive sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var Result = Arr.Order();
+
+            #endregion
+
+            #region 3. Sort a list of products by units in stock from highest to lowest.
+            //var Result = ProductList.OrderByDescending(p => p.UnitsInStock);
+
+            #endregion
+
+            #region 4. Sort a list of digits, first by length of their name, and then alphabetically by the name itself.
+            //string[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            //var Result = Arr.OrderBy(p => p.Length).ThenBy(p => p);
+            #endregion
+
+            #region 5. Sort first by word length and then by a case-insensitive sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var Result = Arr.OrderBy(p => p.Length).ThenBy(p=>p);
+            #endregion
+
+            #region 6. Sort a list of products, first by category, and then by unit price, from highest to lowest.
+            //var Result = ProductList.OrderByDescending(p => p.Category).OrderByDescending(P => P.UnitPrice);
+            #endregion
+
+            #region 7. Sort first by word length and then by a case-insensitive descending sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var Result = Arr.OrderByDescending( x => x.Length );
+
+            #endregion
+
+            #region 8. Create a list of all digits in the array whose second letter is 'i' that is reversed from the order in the original array.
+            //string[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            //var Result = Arr.Where(n => n[1] == 'i').Reverse();
+
+            #endregion
+
+            //foreach (var item in Result)
+            //  Console.WriteLine(item);
+            #endregion
+
+            #region LINQ – Transformation Operators
+
+            #region 1. Return a sequence of just the names of a list of products.
+            //var Result = from p in ProductList
+            //             select p.ProductName;
+
+            #endregion
+
+            #region 2. Produce a sequence of the uppercase and lowercase versions of each word in the original array (Anonymous Types).
+            //string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+            //var Result = words.Select(word => new
+            //{
+            //    Uppercase = word.ToUpper(),
+            //    Lowercase = word.ToLower()
+            //});
+            #endregion
+
+            #region 3. Produce a sequence containing some properties of Products, including UnitPrice which is renamed to Price in the resulting type.
+            //var Result = from p in ProductList
+            //             select new 
+            //             { 
+            //                 Price = p.UnitPrice
+            //             };
+            #endregion
+
+            #region 4. Determine if the value of ints in an array match their position in the array.
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var Result = Arr.Select((num, index) => new
+            //{
+            //    Number = num,
+            //    Found = num == index
+            //});
+            //
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine($"{item.Number}: {item.Found}");
+            //}
+            #endregion
+
+            #region 5. Returns all pairs of numbers from both arrays such that the number from numbersA is less than the number from numbersB.
+            //int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            //int[] numbersB = { 1, 3, 5, 7, 8 };
+            //
+            //var Result = from a in numbersA
+            //             from b in numbersB
+            //             where a < b
+            //             select (a, b);
+
+            #endregion
+
+            #region 6. Select all orders where the order total is less than 500.00.
+            //var Result = CustomerList.SelectMany(order => order.Orders!).Where(order => order.Total < 500.00M);
+            #endregion
+
+            #region 7. Select all orders where the order was made in 1998 or later.
+            //var Result = CustomerList.SelectMany(order => order.Orders!).Where(order => order.OrderDate.Year >= 1998);
+            #endregion
+            //foreach (var item in Result)
+            //    Console.WriteLine(item);
+            #endregion
+
+            #region LINQ - Element Operators
+
+            #region 1. Get first Product out of Stock 
+            //var Result = ProductList.FirstOrDefault(p => p.UnitsInStock == 0);
+            //Console.WriteLine(Result);
+            #endregion
+
+            #region 2. Return the first product whose Price > 1000, unless there is no match, in which case null is returned.
+            //var Result = ProductList.FirstOrDefault(p => p.UnitPrice > 1000);
+            //Console.WriteLine(Result != null ? Result.ProductName : "No product over 1000 :) ");
+
+            #endregion
+
+            #region 3. Retrieve the second number greater than 5 
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var Result = Arr.Where(x => x > 5).Skip(1).FirstOrDefault();
+            //
+            //Console.WriteLine(Result > 0 ? Result : "Nothing Greater Than 5 :)");
+
+            #endregion
+
+
+            #endregion
+        }
+    }
+}
