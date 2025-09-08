@@ -1,6 +1,617 @@
-//======================================
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Demo
+{
+    internal static class IntExtensions
+    {
+        public static int Reverse(this int Number)
+        {
+            int ReversedNumber = Number % 10;
+            while (Number >9)
+            {
+                Number /= 10;
+                int Temp = Number % 10;
+                ReversedNumber = ReversedNumber * 10 + Temp;
+            }
+            return ReversedNumber;
+
+        }
+    }
+}
 
 
+
+//2
+
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace Demo
+{
+    internal static class ListGenerator
+    {
+        public static List<Product> ProductList { get; set; }
+
+        public static List<Customer> CustomerList { get; set; }
+
+        static ListGenerator()
+        {
+            ProductList = new List<Product>()
+            {
+              new Product02(){SerialNumber=1212113 },
+              new Product() {ProductId = 1, ProductName = "Chai", Category = "Beverages",
+                    UnitPrice = 18.00M, UnitsInStock = 100},
+              new Product{ ProductId = 2, ProductName = "Chang", Category = "Beverages",
+                UnitPrice = 19.0000M, UnitsInStock = 17 },
+              new Product{ ProductId = 3, ProductName = "Aniseed Syrup", Category = "Condiments",
+                UnitPrice = 10.0000M, UnitsInStock = 13 },
+              new Product{ ProductId = 4, ProductName = "Chef Anton's Cajun Seasoning", Category = "Condiments",
+                UnitPrice = 22.0000M, UnitsInStock = 53 },
+              new Product{ ProductId = 5, ProductName = "Chef Anton's Gumbo Mix", Category = "Condiments",
+                UnitPrice = 21.3500M, UnitsInStock = 0 },
+              new Product{ ProductId = 6, ProductName = "Grandma's Boysenberry Spread", Category = "Condiments",
+                UnitPrice = 25.0000M, UnitsInStock = 120 },
+              new Product{ ProductId = 7, ProductName = "Uncle Bob's Organic Dried Pears", Category = "Produce",
+                UnitPrice = 30.0000M, UnitsInStock = 15 },
+              new Product{ ProductId = 8, ProductName = "Northwoods Cranberry Sauce", Category = "Condiments",
+                UnitPrice = 40.0000M, UnitsInStock = 6 },
+              new Product{ ProductId = 9, ProductName = "Mishi Kobe Niku", Category = "Meat/Poultry",
+                UnitPrice = 97.0000M, UnitsInStock = 29 },
+              new Product{ ProductId = 10, ProductName = "Ikura", Category = "Seafood",
+                UnitPrice = 31.0000M, UnitsInStock = 31 },
+              new Product{ ProductId = 11, ProductName = "Queso Cabrales", Category = "Dairy Products",
+                UnitPrice = 21.0000M, UnitsInStock = 22 },
+              new Product{ ProductId = 12, ProductName = "Queso Manchego La Pastora", Category = "Dairy Products",
+                UnitPrice = 38.0000M, UnitsInStock = 86 },
+              new Product() { ProductId = 13, ProductName = "Konbu", Category = "Seafood",
+                UnitPrice = 6.0000M, UnitsInStock = 24 },
+              new Product() { ProductId = 14, ProductName = "Tofu", Category = "Produce",
+                UnitPrice = 23.2500M, UnitsInStock = 35 },
+              new Product() { ProductId = 15, ProductName = "Genen Shouyu", Category = "Condiments",
+                UnitPrice = 15.5000M, UnitsInStock = 39 },
+              new Product() { ProductId = 16, ProductName = "Pavlova", Category = "Confections",
+                UnitPrice = 17.4500M, UnitsInStock = 29 },
+              new Product() { ProductId = 17, ProductName = "Alice Mutton", Category = "Meat/Poultry",
+                UnitPrice = 39.0000M, UnitsInStock = 0 },
+              new Product() { ProductId = 18, ProductName = "Carnarvon Tigers", Category = "Seafood",
+                UnitPrice = 62.5000M, UnitsInStock = 42 },
+              new Product() { ProductId = 19, ProductName = "Teatime Chocolate Biscuits", Category = "Confections",
+                UnitPrice = 9.2000M, UnitsInStock = 25 },
+              new Product() { ProductId = 20, ProductName = "Sir Rodney's Marmalade", Category = "Confections",
+                UnitPrice = 81.0000M, UnitsInStock = 40 },
+              new Product() { ProductId = 21, ProductName = "Sir Rodney's Scones", Category = "Confections",
+                UnitPrice = 10.0000M, UnitsInStock = 3 },
+              new Product() { ProductId = 22, ProductName = "Gustaf's Knäckebröd", Category = "Grains/Cereals",
+                UnitPrice = 21.0000M, UnitsInStock = 104 },
+              new Product() { ProductId = 23, ProductName = "Tunnbröd", Category = "Grains/Cereals",
+                UnitPrice = 9.0000M, UnitsInStock = 61 },
+              new Product() { ProductId = 24, ProductName = "Guaraná Fantástica", Category = "Beverages",
+                UnitPrice = 4.5000M, UnitsInStock = 20 },
+              new Product() { ProductId = 25, ProductName = "NuNuCa Nuß-Nougat-Creme", Category = "Confections",
+                UnitPrice = 14.0000M, UnitsInStock = 76 },
+              new Product() { ProductId = 26, ProductName = "Gumbär Gummibärchen", Category = "Confections",
+                UnitPrice = 31.2300M, UnitsInStock = 15 },
+              new Product() { ProductId = 27, ProductName = "Schoggi Schokolade", Category = "Confections",
+                UnitPrice = 43.9000M, UnitsInStock = 49 },
+              new Product() { ProductId = 28, ProductName = "Rössle Sauerkraut", Category = "Produce",
+                UnitPrice = 45.6000M, UnitsInStock = 26 },
+              new Product() { ProductId = 29, ProductName = "Thüringer Rostbratwurst", Category = "Meat/Poultry",
+                UnitPrice = 123.7900M, UnitsInStock = 0 },
+              new Product() { ProductId = 30, ProductName = "Nord-Ost Matjeshering", Category = "Seafood",
+                UnitPrice = 25.8900M, UnitsInStock = 10 },
+              new Product() { ProductId = 31, ProductName = "Gorgonzola Telino", Category = "Dairy Products",
+                UnitPrice = 12.5000M, UnitsInStock = 0 },
+              new Product() { ProductId = 32, ProductName = "Mascarpone Fabioli", Category = "Dairy Products",
+                UnitPrice = 32.0000M, UnitsInStock = 9 },
+              new Product() { ProductId = 33, ProductName = "Geitost", Category = "Dairy Products",
+                UnitPrice = 2.5000M, UnitsInStock = 112 },
+              new Product() { ProductId = 34, ProductName = "Sasquatch Ale", Category = "Beverages",
+                UnitPrice = 14.0000M, UnitsInStock = 111 },
+              new Product() { ProductId = 35, ProductName = "Steeleye Stout", Category = "Beverages",
+                UnitPrice = 18.0000M, UnitsInStock = 20 },
+              new Product() { ProductId = 36, ProductName = "Inlagd Sill", Category = "Seafood",
+                UnitPrice = 19.0000M, UnitsInStock = 112 },
+              new Product() { ProductId = 37, ProductName = "Gravad lax", Category = "Seafood",
+                UnitPrice = 26.0000M, UnitsInStock = 11 },
+              new Product() { ProductId = 38, ProductName = "Côte de Blaye", Category = "Beverages",
+                UnitPrice = 263.5000M, UnitsInStock = 17 },
+              new Product() { ProductId = 39, ProductName = "Chartreuse verte", Category = "Beverages",
+                UnitPrice = 18.0000M, UnitsInStock = 69 },
+              new Product() { ProductId = 40, ProductName = "Boston Crab Meat", Category = "Seafood",
+                UnitPrice = 18.4000M, UnitsInStock = 123 },
+              new Product() { ProductId = 41, ProductName = "Jack's New England Clam Chowder", Category = "Seafood",
+                UnitPrice = 9.6500M, UnitsInStock = 85 },
+              new Product() { ProductId = 42, ProductName = "Singaporean Hokkien Fried Mee", Category = "Grains/Cereals",
+                UnitPrice = 14.0000M, UnitsInStock = 26 },
+              new Product() { ProductId = 43, ProductName = "Ipoh Coffee", Category = "Beverages",
+                UnitPrice = 46.0000M, UnitsInStock = 17 },
+              new Product() { ProductId = 44, ProductName = "Gula Malacca", Category = "Condiments",
+                UnitPrice = 19.4500M, UnitsInStock = 27 },
+              new Product() { ProductId = 45, ProductName = "Rogede sild", Category = "Seafood",
+                UnitPrice = 9.5000M, UnitsInStock = 5 },
+              new Product() { ProductId = 46, ProductName = "Spegesild", Category = "Seafood",
+                UnitPrice = 12.0000M, UnitsInStock = 95 },
+              new Product() { ProductId = 47, ProductName = "Zaanse koeken", Category = "Confections",
+                UnitPrice = 9.5000M, UnitsInStock = 36 },
+              new Product() { ProductId = 48, ProductName = "Chocolade", Category = "Confections",
+                UnitPrice = 12.7500M, UnitsInStock = 15 },
+              new Product() { ProductId = 49, ProductName = "Maxilaku", Category = "Confections",
+                UnitPrice = 20.0000M, UnitsInStock = 10 },
+              new Product() { ProductId = 50, ProductName = "Valkoinen suklaa", Category = "Confections",
+                UnitPrice = 16.2500M, UnitsInStock = 65 },
+              new Product() { ProductId = 51, ProductName = "Manjimup Dried Apples", Category = "Produce",
+                UnitPrice = 53.0000M, UnitsInStock = 20 },
+              new Product() { ProductId = 52, ProductName = "Filo Mix", Category = "Grains/Cereals",
+                UnitPrice = 7.0000M, UnitsInStock = 38 },
+              new Product() { ProductId = 53, ProductName = "Perth Pasties", Category = "Meat/Poultry",
+                UnitPrice = 32.8000M, UnitsInStock = 0 },
+              new Product() { ProductId = 54, ProductName = "Tourtière", Category = "Meat/Poultry",
+                UnitPrice = 7.4500M, UnitsInStock = 21 },
+              new Product() { ProductId = 55, ProductName = "Pâté chinois", Category = "Meat/Poultry",
+                UnitPrice = 24.0000M, UnitsInStock = 115 },
+              new Product() { ProductId = 56, ProductName = "Gnocchi di nonna Alice", Category = "Grains/Cereals",
+                UnitPrice = 38.0000M, UnitsInStock = 21 },
+              new Product() { ProductId = 57, ProductName = "Ravioli Angelo", Category = "Grains/Cereals",
+                UnitPrice = 19.5000M, UnitsInStock = 36 },
+              new Product() { ProductId = 58, ProductName = "Escargots de Bourgogne", Category = "Seafood",
+                UnitPrice = 13.2500M, UnitsInStock = 62 },
+              new Product() { ProductId = 59, ProductName = "Raclette Courdavault", Category = "Dairy Products",
+                UnitPrice = 55.0000M, UnitsInStock = 79 },
+              new Product() { ProductId = 60, ProductName = "Camembert Pierrot", Category = "Dairy Products",
+                UnitPrice = 34.0000M, UnitsInStock = 19 },
+              new Product() { ProductId = 61, ProductName = "Sirop d'érable", Category = "Condiments",
+                UnitPrice = 28.5000M, UnitsInStock = 113 },
+              new Product() { ProductId = 62, ProductName = "Tarte au sucre", Category = "Confections",
+                UnitPrice = 49.3000M, UnitsInStock = 17 },
+              new Product() { ProductId = 63, ProductName = "Vegie-spread", Category = "Condiments",
+                UnitPrice = 43.9000M, UnitsInStock = 24 },
+              new Product() { ProductId = 64, ProductName = "Wimmers gute Semmelknödel", Category = "Grains/Cereals",
+                UnitPrice = 33.2500M, UnitsInStock = 22 },
+              new Product() { ProductId = 65, ProductName = "Louisiana Fiery Hot Pepper Sauce", Category = "Condiments",
+                UnitPrice = 21.0500M, UnitsInStock = 76 },
+              new Product() { ProductId = 66, ProductName = "Louisiana Hot Spiced Okra", Category = "Condiments",
+                UnitPrice = 17.0000M, UnitsInStock = 4 },
+              new Product() { ProductId = 67, ProductName = "Laughing Lumberjack Lager", Category = "Beverages",
+                UnitPrice = 14.0000M, UnitsInStock = 52 },
+              new Product() { ProductId = 68, ProductName = "Scottish Longbreads", Category = "Confections",
+                UnitPrice = 12.5000M, UnitsInStock = 6 },
+              new Product() { ProductId = 69, ProductName = "Gudbrandsdalsost", Category = "Dairy Products",
+                UnitPrice = 36.0000M, UnitsInStock = 26 },
+              new Product() { ProductId = 70, ProductName = "Outback Lager", Category = "Beverages",
+                UnitPrice = 15.0000M, UnitsInStock = 15 },
+              new Product() { ProductId = 71, ProductName = "Flotemysost", Category = "Dairy Products",
+                UnitPrice = 21.5000M, UnitsInStock = 26 },
+              new Product() { ProductId = 72, ProductName = "Mozzarella di Giovanni", Category = "Dairy Products",
+                UnitPrice = 34.8000M, UnitsInStock = 14 },
+              new Product() { ProductId = 73, ProductName = "Röd Kaviar", Category = "Seafood",
+                UnitPrice = 15.0000M, UnitsInStock = 101 },
+              new Product() { ProductId = 74, ProductName = "Longlife Tofu", Category = "Produce",
+                UnitPrice = 10.0000M, UnitsInStock = 4 },
+              new Product() { ProductId = 75, ProductName = "Rhönbräu Klosterbier", Category = "Beverages",
+                UnitPrice = 7.7500M, UnitsInStock = 125 },
+              new Product() { ProductId = 76, ProductName = "Lakkalikööri", Category = "Beverages",
+                UnitPrice = 18.0000M, UnitsInStock = 57 },
+              new Product() { ProductId = 77, ProductName = "Original Frankfurter grüne Soße", Category = "Condiments",
+                UnitPrice = 13.0000M, UnitsInStock = 32 }
+
+            };
+
+            /*("Customers.xml") lw h7to gwa el bin 8er Kda Aktb el path Bta3o*/
+
+            CustomerList = (from e in XDocument.Load("Customers.xml").Root?.Elements("customer")
+                            select new Customer()
+                            {
+                                CustomerId = (string?)e.Element("id") ?? string.Empty,
+                                CustomerName = (string?)e.Element("name") ?? string.Empty,
+                                Address = (string?)e.Element("address") ?? string.Empty,
+                                City = (string?)e.Element("city") ?? string.Empty,
+                                Region = (string?)e.Element("region") ?? string.Empty,
+                                PostalCode = (string?)e.Element("postalcode") ?? string.Empty,
+                                Country = (string?)e.Element("country") ?? string.Empty,
+                                Phone = (string?)e.Element("phone") ?? string.Empty,
+                                Fax = (string?)e.Element("fax") ?? string.Empty,
+                                Orders = (
+                                       from o in e.Elements("orders").Elements("order")
+                                       select new Order
+                                       {
+                                           OrderId = (int?)o.Element("id") ?? default,
+                                           OrderDate = (DateTime?)o.Element("orderdate") ?? default,
+                                           Total = (decimal?)o.Element("total") ?? default,
+                                       }).ToArray()
+                            }).ToList();
+
+        }
+    }
+
+
+    internal class Product : IComparable<Product>,IEquatable<Product>
+    {
+
+        public long ProductId { get; set; }
+        public string? ProductName { get; set; }
+        public string? Category { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int UnitsInStock { get; set; }
+
+        public int CompareTo(Product? other)
+        {
+            return this.UnitPrice.CompareTo(other?.UnitPrice);
+        }
+
+        public  bool Equals(Product? other)
+        {
+            if (other is null) return false;
+            return this.ProductId == other.ProductId &&
+                this.ProductName == other.ProductName &&
+                this.Category == other.Category &&
+                this.UnitPrice == other.UnitPrice &&
+                this.UnitsInStock == other.UnitsInStock;
+        }
+
+        public override int GetHashCode()
+         => HashCode.Combine(this.ProductId, this.ProductName, this.Category, this.UnitPrice, this.UnitsInStock);
+            
+        public override string ToString()
+            => $"ProductID : {ProductId} , ProductName : {ProductName} , Category{Category} , UnitPrice : {UnitPrice} , UnitsInStock : {UnitsInStock}";
+
+    }
+
+    internal class Product02 :Product
+    {
+        public int SerialNumber { get; set; }
+
+        public override string ToString()
+        {
+            return $"SerialNumber = {SerialNumber}";
+        }
+
+    }
+    internal class Customer
+    {
+        public string ?CustomerId { get; set; }
+        public string ?CustomerName { get; set; }
+        public string ?Address { get; set; }
+        public string ?City { get; set; }
+        public string ?Region { get; set; }
+        public string ?PostalCode { get; set; }
+        public string ?Country { get; set; }
+        public string ?Phone { get; set; }
+        public string ?Fax { get; set; }
+        public Order[]? Orders { get; set; }
+        public Customer(string customerID, string customerName)
+        {
+            CustomerId = customerID;
+            CustomerName = customerName;
+            Orders = new Order[10];
+        }
+        public Customer()
+        {
+
+        }
+        public override string ToString()
+            => $"{CustomerId}, {CustomerName}, {Address}, {City}, {Region}, {PostalCode}, {Country}, {Phone}, {Fax}";
+    }
+    internal class Order
+    {
+        public int OrderId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal Total { get; set; }
+
+        public Order(int orderID, DateTime orderDate, decimal total)
+        {
+            OrderId = orderID;
+            OrderDate = orderDate;
+            Total = total;
+        }
+        public Order()
+        {
+
+        }
+
+        public override string ToString()
+            => $"Order Id: {OrderId}, Date: {OrderDate.ToShortDateString()}, Total: {Total}";
+    }
+
+
+}
+
+
+
+﻿using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static Demo.ListGenerator;
+namespace Demo
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            #region Important Notes
+            //In Extenstion Method Region
+            //Ana 3wza Function El Reverse Tb2a Gwa Class El Int
+            //Fa Hro7 A3ml El Class Static Mna M4 H3ml Mno Object
+            //whro7 ll Functon A5ly Elparameter Bt3ha this (Caller)
+
+            //Yield => 34an return Aktar Mn Element
+
+            //LINQ Execution Ways يعتبر دا السؤال دا السؤاال الوحيد اللى هتتسال فيه عن اللينكيو في الانترفيو
+            //hnzaker linq brdo mn mirosoft categories
+
+            #endregion
+
+            #region Implicitly-Typed Local Variable
+
+            #region Var
+            //Type Safe
+            //Is A C# KeyWord  3.0 Featured 
+            //var Name = "Ahmed";
+            //Caomplier Can Detect The Type of the variable based on  Initial Value
+            //Must Be Initialized 
+            //var Number = Null; //Invalied : Can't Be Initialized With Null
+
+
+
+            #endregion
+
+            #region Daynamic
+            //Is A c# Keywor 4.0 Feature
+            //dynamic Data;
+            // Type Unsafe
+            //Compiler 'll Escape Type Checking At Comilation Time
+            //CLR 'LL Resolve the Actual Type of A dynami TYPE vARIABLE At Runtime And Will Be Changed Based On the Assigned Value
+            //Musn't be Initialzed
+            //Can Be Initialize With Null
+            //U Can Change It's DataType
+
+            ///Asp.net => Has 3 Projects [ [Asp.net MVC , Asp.net Razor Pages] B3ml behom server Web Application,]
+            ///
+            //Data = "Ahmed";
+            //Data = 3;
+
+            #endregion
+
+            ///Var vs Daynamic
+            ///var x = null;
+            ///dynamic x = null;
+            ///Console.WriteLine(x);
+
+
+            #endregion
+
+            #region Anomynous Type
+
+            //B3ml Object MN Type M4 Mwgod  Bst5dmo mra w7da msln
+            //lw 3mlto Of TyPE object yb2a ana b3ml object mn class already mwgod
+
+            //var emp = new { Id = 10, Name = "Alaa", Salary = 20000 };//Anomynous Type
+            //Console.WriteLine(emp.Id);
+            ////Immutable Type
+            //emp = new { Id = 30, emp.Name, emp.Salary };
+            //emp = emp with { Id = 30 };//Syntax Sugar
+
+
+            #endregion
+
+            #region Extenstion Method
+
+            //int x = 12345;
+            ////int y = IntExtensions.Reverse(x);
+            //int y = x.Reverse();
+            //Console.WriteLine(y);
+
+            #endregion
+
+            #region What Is Linq
+            //LINQ :Stands For Language Integrated Query
+            //LINQ :+40  Extensions Methods for Built-IN Interface "IEmuerable"
+            //     :Named As "LINQ Operators" Existed in Class Class "IEmuerable"  
+            //     :Categorized into 13 Categorey we 'll Discuss 3 today
+            //Use LINQ Opeartors Againest Data , Regardless Data Store (Stored IN Sequence)(File, DataBase Provider(SQL Server) , MySQL ,Orcale)
+            //Sequence : Is An Object From Class Implement "IEmuerable" Interface like list ,ArrayList, Dictionary , Hashset, etc...
+            //1.local Sequence  : Linq to Object m4 byt7wl l sql 
+            //2.Remote Sequence : Linq to intity framework byt7wl l sql 
+
+            // List<int> Numbers = new List<int>() {1,2,3,4,5,6,7 };
+            // var Odd = Numbers.Where(n => n % 2 == 1)/*.ToList()*/;
+            // Numbers.AddRange([9,10,11,12,13,15]);
+            // //After This Line We Must Change The DataType Of Odd Into Var 
+            //foreach (int n in Odd)
+            // {
+            //     Console.WriteLine(n);
+            // }
+            #endregion
+
+            #region LINQ Syntax
+
+            #region 1.Fluent Syntax
+            //List<int> Number = new List<int>() {1,2,3,4,5,6,7,8,9,10 };
+
+            ////1.1     Call "LINQ Operator" as  = Static Method Throw "Enumerable" Class
+            //var/*IEnumerable<int>*/ OddNum = Enumerable.Where<int>(Number, N => N % 2 == 1);
+
+            ////1.2     Call "LINQ Operator" as  = Extension Method 
+            //OddNum = Number.Where(N => N % 2 == 1);
+            //foreach (var o in OddNum)
+            //{
+            //    Console.WriteLine(o);
+            //} 
+            #endregion
+
+            #region 2.Query Syntax
+            //Query Syntax : qUERY eXPRESSION (Like SQLServer Style)
+            /*
+              Select N
+              From NuMBERS N
+              wHERE N % 2 == 1 
+             
+             */
+            //List<int> Number = new List<int>() {1,2,3,4,5,6,7,8,9,10 };
+            //var OddNum = Enumerable.Where<int>(Number, N => N % 2 == 1);
+
+            //OddNum =from n in Number
+            //        where n % 2 == 1
+            //        select n;
+
+
+            #endregion
+
+
+            #endregion
+
+            #region LINQ Execution Ways
+
+            #region Differed Execution
+
+            //1.     Differed Execution Works on the Latest Version Of Data
+            //3ndna 10 SH8alen Differed w 3  SH8alen Immediate
+            //List<int> Number = new List<int>() {1,2,3,4,5,6,7,8,9,10 };
+            //var Result = Number.Where((N) => N % 2 == 1);
+            //Number.AddRange(new int []{ 11,12,13,14,15,16,17} );
+
+            //foreach( int i in Result)
+            //{
+            //    Console.WriteLine(i);
+            //} 
+            #endregion
+
+            #region Immediate Execution
+            //Element Operators ,Casting Operators  , Aggregate  Operators
+
+            //List<int> Number = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //var Result = Number.Where((N) => N % 2 == 1).ToList();
+            //Number.AddRange(new int[] { 11, 12, 13, 14, 15, 16, 17 });
+
+            //foreach (int i in Result)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            #endregion
+
+            #endregion
+
+            #region Filtration [Restrication] Operators - Where/TypeOf
+
+
+            #region Where
+            //var Result = ProductList.Where(P => P.UnitsInStock==0);
+            //Result =from P in ProductList
+            //        where P.UnitsInStock==0
+            //        select P;
+
+            //var Result = ProductList.Where(P => P.UnitsInStock == 0 && P.Category == "Meat/Poultry");
+            //Result = from P in ProductList
+            //         where P.UnitsInStock==0 && P.Category== "Meat/Poultry"
+            //         select P;
+
+            #endregion
+
+
+            #region Indexed Where
+            //Indexed  where is Valid Only Fluent Syntax ,Can't be Written Using Query Expression
+            //var Result = ProductList.Where((P, I) => I < 10 && P.UnitsInStock == 0);
+            //Search in The First 10 Elements Only
+            //Get the Product Out of Stok from 10 Elements
+
+            #endregion
+
+            #region TypeOf
+            // var Result = ProductList.OfType<Product>();
+            #endregion
+
+
+            #endregion
+
+            #region Transformation (Projection ) Operators - Select | Select Many 
+
+            #region Select 
+            //var Result = ProductList.Select(P => P.ProductName);
+            //Result = from P in ProductList
+            //         select P.ProductName;
+            //var CustomerNames = CustomerList.Select(C => C.Orders);
+            //var Result = ProductList.Where(p => p.UnitsInStock > 0)
+            //                      .Select(p => $"{p.ProductId} :: {p.ProductName}");
+
+            //var Result = ProductList.Where(P => P.UnitsInStock > 0)
+            //                       .Select(P => new
+            //                       {
+            //                           P.ProductId,
+            //                           P.ProductName,
+            //                           NewPrice=P.UnitPrice-(P.UnitPrice*0.2M)
+            //                       });
+            //
+            //Result = from p in ProductList
+            //         where p.UnitsInStock > 0
+            //         select new
+            //         {
+            //             p.ProductId,
+            //             p.ProductName,
+            //             NewPrice = p.UnitPrice - (p.UnitPrice * 0.2M)
+            //         };
+            #endregion
+
+            ///Indexed Select
+            /// Valied Only With Fluent Syntax
+            ///var Result =ProductList.Select((P,index) => new
+            ///                         { 
+            ///                           P = P,
+            ///                           index = index
+            ///                         });
+
+            #region Select Many
+            ///var Result = CustomerList.SelectMany(C => C.Orders!);
+            ///Result =from C in CustomerList
+            ///        from O in C.Orders!
+            ///        select O;
+
+
+
+            ///var Result = CustomerList.SelectMany(C => C.Orders!, (customer, order) => new { customer, order });
+            ///Result = from C in CustomerList
+            ///        from O in C.Orders!
+            ///        select (customer = C, order = O);
+
+            #endregion
+
+            #endregion
+
+            #region Ordering Operator
+
+            ///Hna Lazm Class el Product Implement IComparable
+            ///var Result = ProductList.Order();
+            ///var Result = ProductList.OrderDescending();
+
+
+            ///Hna Hst5dm Order By 
+            ///var Result = ProductList.OrderBy(P => P.UnitsInStock);
+            ///Result = ProductList.OrderBy(P => P.UnitsInStock).ThenBy(P => P.UnitPrice);
+            ///Result = from P in ProductList
+            ///         orderby P.UnitPrice  ,P.UnitsInStock  descending
+            ///         select P;
+
+            #region Reverse
+            //Only In Fluent Expression
+            //var Result = ProductList.Where(P => P.UnitsInStock == 0).Reverse();
+
+            #endregion
+
+
+            #endregion
+
+
+
+        }
+    }
+}
 
      
 
